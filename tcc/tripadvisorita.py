@@ -4,7 +4,7 @@ from tcc.items import TccItem
 class TripAdvisorItalianSpider(scrapy.Spider):
     name = 'Tripadvisor ITA'
     allowed_domains = ['tripadvisor.it']
-    start_urls = ['https://www.tripadvisor.it/ShowTopic-g1-i13217-k11248247-El_cuaderno_rojo_de_Cuba-Diari_di_viaggio.html']
+    start_urls = ['https://www.tripadvisor.it/ShowTopic-g1-i13217-k11248247-El_cuaderno_rojo_de_Cuba-Diari_di_viaggio.html', 'https://www.tripadvisor.it/ShowTopic-g1-i13217-k11405377-Il_mio_viaggio_in_Oman-Diari_di_viaggio.html']
 
     def parse(self, response):
       for post in response.css("div.postcontent"):
