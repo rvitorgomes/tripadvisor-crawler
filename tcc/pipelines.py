@@ -9,7 +9,7 @@ import json
 
 class TccPipeline(object):
     def open_spider(self, spider):
-        self.file = open('dataset.txt', 'w')
+        self.file = open('data.txt', 'w')
 
     def close_spider(self, spider):
         self.file.close()
