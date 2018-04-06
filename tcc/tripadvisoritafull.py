@@ -6,13 +6,13 @@ class TripAdvisorItalianFullSpider(scrapy.Spider):
     allowed_domains = ['tripadvisor.it']
     start_urls = ['https://www.tripadvisor.it/ShowForum-g1-i13217-Diari_di_viaggio.html']
 
-    # get the first page
-    # get all topic links
-    # go for the first topic responses
-    # parse the posts
-    # get the next page
-    # go to 2
-    # end
+    # 1. get the first page
+    # 2. get all topic links
+    # 3. go for the first topic responses
+    # 4. parse the posts
+    # 5. get the next page
+    # 6. go to 2 or end
+    # 7. end
 
     def parse(self, response):
         # get the first main page links
