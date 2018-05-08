@@ -41,7 +41,7 @@ async function fetchPagePosts(url) {
 		.click('div.review-container p.partial_entry span.ulBlueLinks:first-child')
 		.wait(100)
 		.scrollTo(999999999, 0)
-		.wait(500	)
+		.wait(1000)
 		.evaluate(() => new Array(...document.querySelectorAll('p.partial_entry')).map(el => ({
 			title: document.title, text: el.innerText, link: document.URL, source: 'tripadvisorhu'
 		})))
