@@ -39,9 +39,8 @@ async function fetchPagePosts(url) {
 	return await nightmare.goto(url)
 		.wait('body')
 		.click('div.review-container p.partial_entry span.ulBlueLinks:first-child')
-		.wait(100)
 		.scrollTo(999999999, 0)
-		.wait(1000)
+		.wait(500)
 		.evaluate(() => new Array(...document.querySelectorAll('p.partial_entry')).map(el => ({
 			title: document.title, text: el.innerText, link: document.URL, source: 'tripadvisorhu'
 		})))
@@ -62,22 +61,28 @@ async function crawler(baseURL) {
 
 		const pages = await fetchFilterPageLinks(url);
 
-		console.log(`Got ${pages.length} post pages`);
-
-		for (let i = 0; i < pages.length; i++) {
-			const url = pages[i];
-			const data = await fetchPagePosts(url);
-			DATASET.push(...data);
-		}
-
-		console.log(`Parsed ${i+1} of ${pages.length}`);
+		console.log(`Got more ${pages.length} pages`);
+		PAGES.push(...pages);
+		console.log(`Parsed ${i+1} of ${links.length}`);
 	}
+
+	for (let j = 0; j < PAGES.length; j++) {
+		const url = PAGES[j];
+		const data = await fetchPagePosts(url);
+		DATASET.push(...data);
+	}
+
+	console.log('TOTAL PAGES TO BE CRAWLED', PAGES.length);
+
 
 	fs.appendFile('hungarian.txt', JSON.stringify(DATASET, null, 1), (err) => {
 		if (err) throw err;
 		const t1 = Date.now();
-		console.log(DATASET.length, 'POSTS CRAWLED in', ((t1 - t0) / 60 / 1000));
+		console.log(`${DATASET.length} posts`);
+		console.log(`${PAGES.length} pages`);
+		console.log(`Total time: ${((t1 - t0) / 60 / 1000)} minutes`);
 	});
+
 
 	await nightmare.end();
 	console.log('DONE');
