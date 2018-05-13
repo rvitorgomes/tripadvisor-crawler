@@ -1,7 +1,21 @@
 'use strict';
 
-// const { Observable, from, of } = require('rxjs');
-// const { map, mergeMap, tap, concatMap, bufferCount, debounceTime, concatAll } = require('rxjs/operators');
+const { 
+	Observable,
+	from, 
+	of
+} = require('rxjs');
+
+const { 
+	map, 
+	mergeMap, 
+	tap, 
+	concatMap, 
+	bufferCount, 
+	debounceTime, 
+	concatAll,
+	toArray
+} = require('rxjs/operators');
 
 const Nightmare = require('nightmare');
 const fs = require('fs');
@@ -62,15 +76,17 @@ async function crawler(baseURL) {
 
 		const pages = await fetchFilterPageLinks(url);
 
-		console.log(`Got more ${pages.length} pages`);
 		PAGES.push(...pages);
 		console.log(`Parsed ${i+1} of ${links.length}`);
+		console.log(`${PAGES.length} Pages so far...`);
 	}
 
 	for (let j = 0; j < PAGES.length; j++) {
 		const url = PAGES[j];
 		const data = await fetchPagePosts(url);
+
 		DATASET.push(...data);
+		console.log(`Parsing ${j+1} of ${PAGES.length}`);
 	}
 
 	console.log('TOTAL PAGES TO BE CRAWLED', PAGES.length);

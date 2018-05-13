@@ -1,0 +1,1 @@
+PYTHONPATH=../ jupyter notebook
