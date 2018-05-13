@@ -18,7 +18,6 @@
   "homepage": "https://github.com/rvitorgomes/textCrawler#readme",
   "dependencies": {
     "lodash": "^4.17.10",
-    "nightmare": "^3.0.1",
-    "rxjs": "^6.0.0"
+    "nightmare": "^3.0.1"
   }
 }

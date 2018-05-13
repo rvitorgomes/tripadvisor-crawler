@@ -1,22 +1,5 @@
 'use strict';
 
-const { 
-	Observable,
-	from, 
-	of
-} = require('rxjs');
-
-const { 
-	map, 
-	mergeMap, 
-	tap, 
-	concatMap, 
-	bufferCount, 
-	debounceTime, 
-	concatAll,
-	toArray
-} = require('rxjs/operators');
-
 const Nightmare = require('nightmare');
 const fs = require('fs');
 
@@ -24,7 +7,6 @@ const nightmare = Nightmare();
 
 const uniq = require('lodash/uniq');
 const flattenDeep = require('lodash/flattenDeep');
-const cloneDeep = require('lodash/cloneDeep');
 
 async function fetchHomePageLinks(url) {
 
@@ -34,7 +16,7 @@ async function fetchHomePageLinks(url) {
 		.evaluate(() => new Array(...document.querySelectorAll('li.item a.ui_link')).map(el => [ el.href ]))
 		.catch(err => (console.log(err), []));
 
-	return flattenDeep(cloneDeep(links));
+	return uniq(flattenDeep(links));
 }
 
 async function fetchFilterPageLinks(url) {
@@ -45,7 +27,7 @@ async function fetchFilterPageLinks(url) {
 		.evaluate(() => new Array(...document.querySelectorAll('a.property_title')).map(el => [ el.href ]))
 		.catch(err => (console.log(err), []));
 
-	return flattenDeep(cloneDeep(links));
+	return uniq(flattenDeep(links));
 }
 
 async function fetchPagePosts(url) {
