@@ -17,9 +17,11 @@ $ conda --version
 $ conda create -n crawler
 $ activate crawler
 
+4. Para linux
+$ source activate crawler
+
 5. Install the packages
 $ conda install scrapy
-$ conda install -c conda-forge selenium
 
 6. Check if you have the latest WebDriver for Firefox (geckodriver.exe) inside the project root, otherwise you can download from https://github.com/mozilla/geckodriver/releases
 

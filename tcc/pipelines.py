@@ -9,6 +9,7 @@ import json
 
 class TccPipeline(object):
     def open_spider(self, spider):
+        # change the name of the file for each language
         self.file = open('data.txt', 'w')
 
     def close_spider(self, spider):

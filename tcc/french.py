@@ -34,6 +34,7 @@ class TripAdvisorItalianFullSpider(scrapy.Spider):
             source = 'tripadvisor_french'
             link = reponsesPage.url
 
+            # before run change the name of the output file in pipelines.py
             parsed = TccItem(title=title, text=text, date=date, source=source, link=link)
             next_page = response.css("a.sprite-pageNext::attr(href)").extract_first()
 

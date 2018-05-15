@@ -5,9 +5,13 @@ const fs = require('fs');
 
 const nightmare = Nightmare();
 
+// Filters an array return the uniq values
 const uniq = require('lodash/uniq');
+
+// Makes an array 1-d [[1,2,3],[[4,5],6]] to [1,2,3,4,5,6]
 const flattenDeep = require('lodash/flattenDeep');
 
+// Grab all links from homepage cards
 async function fetchHomePageLinks(url) {
 
 	const links = await nightmare.goto(url)
@@ -19,6 +23,7 @@ async function fetchHomePageLinks(url) {
 	return uniq(flattenDeep(links));
 }
 
+// Grab the post links from recommendation page  
 async function fetchFilterPageLinks(url) {
 
 	const links = await nightmare.goto(url)
@@ -30,12 +35,15 @@ async function fetchFilterPageLinks(url) {
 	return uniq(flattenDeep(links));
 }
 
+// Grab the texts from the a review post page
 async function fetchPagePosts(url) {
 
 	return await nightmare.goto(url)
 		.wait('body')
+		// clicking on more
 		.click('div.review-container p.partial_entry span.ulBlueLinks:first-child')
 		.scrollTo(999999999, 0)
+		// waiting the content load after clicking
 		.wait(500)
 		.evaluate(() => new Array(...document.querySelectorAll('p.partial_entry')).map(el => ({
 			title: document.title, text: el.innerText, link: document.URL, source: 'tripadvisorhu'
@@ -44,6 +52,12 @@ async function fetchPagePosts(url) {
 		.catch(err => []);
 }
 
+/* Steps
+*  1. Grab the links on homepage cards
+*  2. The card links go for a list of recommended reviews
+*  3. Grab the list of review post pages
+*  4. Go for the review post page and grab the posts
+*/ 
 async function crawler(baseURL) {
 	console.log('getting the homepage links...');
 
