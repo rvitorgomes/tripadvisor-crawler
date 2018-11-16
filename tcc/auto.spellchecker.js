@@ -104,6 +104,6 @@ const results_parsed = filter(keyBy(uniqBy(results.filter(v => !!v), 'word'), 'w
     item.suggestions.length &&
     false_spellcheckings.indexOf(item.word) === -1
 )
-console.log(results_parsed);
+console.log(map(results_parsed, (v) => v.word).join('\n'));
 
-fs.writeFileSync('auto.spellchecker.results.filtered.json', JSON.stringify(results_parsed, null, 2));
+//fs.writeFileSync('auto.spellchecker.results.filtered.json', JSON.stringify(results_parsed, null, 2));
