@@ -86,7 +86,7 @@ MIT
 
 This project is licensed under Unlicense license. <br>
 **Not for commercial usage.** <br>
-**For academic usage ask me for reference.** <br>
+**For academic usage ask me for instructions.** <br>
 
 [issues]:https://github.com/rvitorgomes/textCrawler/issues/new
 
