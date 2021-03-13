@@ -19,7 +19,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "deep-extend": "^0.5.1",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.19",
     "nightmare": "^3.0.1",
     "node-xlsx": "^0.12.1",
     "utf8": "^3.0.0"
