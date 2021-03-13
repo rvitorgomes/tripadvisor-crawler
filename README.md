@@ -75,18 +75,15 @@ Check if you have the latest WebDriver for Firefox (geckodriver.exe) inside the 
 
 ## License
 
-MIT
-
----
-> GitHub [@rvitorgomes](https://github.com/rvitorgomes) &nbsp;&middot;&nbsp;
-> Linkedin [Rubens Gomes](https://linkedin.com/rvitorgomes)
-
-
-## Licensing
-
 This project is licensed under Unlicense license. <br>
 **Not for commercial usage.** <br>
-**For academic usage ask me for instructions.** <br>
+**For academic usage/citation ask me for instructions.** <br>
+
+---
+> GitHub [@rvitorgomes](https://github.com/rvitorgomes) <br>
+> Linkedin [Rubens Gomes](https://www.linkedin.com/in/rvitorgomes) <br>
+> Email rvitorgomes@gmail.com
+
 
 [issues]:https://github.com/rvitorgomes/textCrawler/issues/new
 
